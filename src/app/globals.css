@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #181818;
+  --foreground: #f5f5f5;
+  --accent-gradient: linear-gradient(90deg, #fff 0%, #b3b3b3 100%);
+  --border-radius: 0.125rem;
+  --font-thin: 300;
+  --font-light: 400;
+  --font-regular: 500;
+  --font-semibold: 600;
+  --header-height: 4rem;
 }
 
 @theme inline {
@@ -14,7 +21,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #181818;
     --foreground: #ededed;
   }
 }
@@ -22,5 +29,109 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Geist', Arial, Helvetica, sans-serif;
+  font-weight: var(--font-light);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+button, [role="button"], a, input, select, textarea {
+  outline: none;
+  transition: box-shadow 0.18s, outline 0.18s;
+}
+button:focus-visible, [role="button"]:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff3, 0 2px 16px 0 rgba(255,255,255,0.08);
+}
+
+button:hover, [role="button"]:hover, a:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 2px 16px 0 rgba(255,255,255,0.12);
+}
+
+button:active, [role="button"]:active, a:active {
+  filter: brightness(0.95);
+}
+
+input, select, textarea {
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: var(--border-radius);
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #fff;
+  background: #181818;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #181818;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+  :root {
+    --header-height: 3.25rem;
+  }
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+.mxv-button {
+  padding: 0.6rem 1.5rem;
+  background: var(--accent-gradient);
+  color: #111;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 16px 0 rgba(255,255,255,0.08);
+  transition: background 0.18s, color 0.18s;
+  outline: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.mxv-button:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 2px 16px 0 rgba(255,255,255,0.12);
+}
+
+.mxv-button:active {
+  filter: brightness(0.95);
 }
