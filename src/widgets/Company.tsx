@@ -16,15 +16,6 @@ const stats = [
   ) },
 ];
 
-const founders = [
-  { initials: 'RM', name: 'Roman Midis', role: 'CEO' },
-  { initials: 'AL', name: 'Alex Lee', role: 'CTO' },
-  { initials: 'SK', name: 'Sara Kim', role: 'CPO' },
-  { initials: 'JD', name: 'James Doe', role: 'COO' },
-  { initials: 'MT', name: 'Maria Torres', role: 'Head of AI' },
-  { initials: 'BK', name: 'Ben Kumar', role: 'Lead Designer' },
-];
-
 export default function Company() {
   return (
     <section id="company" style={{
@@ -84,7 +75,7 @@ export default function Company() {
         <div style={{ color: '#ededed', fontWeight: 300, fontSize: '1.13rem', lineHeight: 1.7, marginBottom: 28 }}>
           MaverickX Vision was founded to democratize high-quality video creation with the power of AI. Our mission is to empower brands, creators, and educators to produce viral, human-like videos in minutes—no technical skills required. We believe in creativity, speed, and results.
         </div>
-        <a href="/our-story" style={{
+        <a href="/company" style={{
           display: 'inline-block',
           background: 'var(--accent-gradient)',
           color: '#111',

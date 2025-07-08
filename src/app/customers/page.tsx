@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function AnimatedCounter({ value, duration = 1200, format = (v: number) => v.toLocaleString() }: { value: number; duration?: number; format?: (v: number) => string }) {
   const [count, setCount] = useState(0);

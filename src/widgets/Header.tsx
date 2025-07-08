@@ -6,10 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { name: 'Features', dropdown: true },
   { name: 'Customers', href: '/customers' },
   { name: 'Company', href: '/company' },
-  { name: 'Testimonials' },
   { name: 'Contact', href: '/contacts' },
   { name: 'FAQ', href: '/faq' },
 ];
@@ -86,19 +84,19 @@ export default function Header() {
         height: '100%'
       }}>
         {/* Logo */}
-        <a href="/" style={{
+        <Link href="/" style={{
           display: 'flex',
           alignItems: 'center',
           textDecoration: 'none',
           userSelect: 'none',
         }}>
           <img
-            src="/logo_maverickx_vision.svg"
+            src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logo_maverickx_vision.svg` : "/logo_maverickx_vision.svg"}
             alt="MaverickX Vision Logo"
             style={{ height: 24, width: 'auto', display: 'block' }}
             draggable={false}
           />
-        </a>
+        </Link>
         {/* Desktop Nav */}
         <ul className="header-nav" style={{
           display: 'flex',
@@ -110,118 +108,55 @@ export default function Header() {
         }}>
           {navLinks.map(link => (
             <li key={link.name} style={{ position: 'relative' }}>
-              {link.dropdown ? (
-                <div
-                  onMouseEnter={() => setShowDropdown(true)}
-                  onMouseLeave={() => setShowDropdown(false)}
-                  style={{ display: 'inline-block', position: 'relative' }}
+              {link.href ? (
+                <Link
+                  href={link.href}
+                  style={{
+                    color: (pathname === link.href) ? '#6800F8' : '#fff',
+                    fontWeight: 400,
+                    fontSize: '1rem',
+                    borderRadius: 'var(--border-radius)',
+                    padding: '0.25rem 0.5rem',
+                    transition: 'color 0.15s',
+                    textDecoration: 'none',
+                    boxShadow: 'none',
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.color = '#6800F8';
+                    e.currentTarget.style.background = 'none';
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.color = (pathname === link.href) ? '#6800F8' : '#fff';
+                    e.currentTarget.style.background = 'none';
+                  }}
                 >
-                  <button
-                    style={{
-                      background: 'none',
-                      color: '#fff',
-                      fontWeight: 400,
-                      fontSize: '1rem',
-                      border: 'none',
-                      padding: 0,
-                      cursor: 'pointer',
-                      borderRadius: 'var(--border-radius)',
-                    }}
-                    aria-haspopup="true"
-                    aria-expanded={showDropdown}
-                  >
-                    Features
-                  </button>
-                  {showDropdown && (
-                    <ul
-                      style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        background: '#181818',
-                        boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
-                        borderRadius: 'var(--border-radius)',
-                        minWidth: 180,
-                        padding: '0.5rem 0',
-                        zIndex: 100,
-                        border: '1px solid #222',
-                        marginTop: 0,
-                      }}
-                    >
-                      {featuresDropdown.map(f => {
-                        const sectionId = f.toLowerCase().replace(/ /g, '-');
-                        return (
-                          <li key={f} style={{
-                            padding: '0.5rem 1.5rem',
-                            color: '#fff',
-                            fontWeight: 400,
-                            fontSize: '1rem',
-                            cursor: 'pointer',
-                            whiteSpace: 'nowrap',
-                            transition: 'background 0.15s',
-                          }}>
-                            <Link
-                              href={`/#${sectionId}`}
-                              style={{ color: '#fff', textDecoration: 'none', display: 'block', width: '100%' }}
-                              tabIndex={0}
-                              scroll={true}
-                              onClick={e => {
-                                if (typeof window !== 'undefined' && window.location.pathname !== '/') {
-                                  window.location.href = `/#${sectionId}`;
-                                  e.preventDefault();
-                                }
-                              }}
-                            >
-                              {f}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </div>
+                  {link.name}
+                </Link>
               ) : (
-                link.href ? (
-                  <Link
-                    href={link.href}
-                    style={{
-                      color: (pathname === link.href) ? '#6800F8' : '#fff',
-                      fontWeight: 400,
-                      fontSize: '1rem',
-                      borderRadius: 'var(--border-radius)',
-                      padding: '0.25rem 0.5rem',
-                      transition: 'background 0.15s',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <Link
-                    href={`/#${link.name.toLowerCase()}`}
-                    style={{
-                      color: '#fff',
-                      fontWeight: 400,
-                      fontSize: '1rem',
-                      borderRadius: 'var(--border-radius)',
-                      padding: '0.25rem 0.5rem',
-                      transition: 'background 0.15s',
-                    }}
-                    scroll={true}
-                    onClick={e => {
-                      const sectionId = link.name.toLowerCase();
-                      if (
-                        typeof window !== 'undefined' &&
-                        window.location.pathname !== '/'
-                      ) {
-                        window.location.href = `/#${sectionId}`;
-                        e.preventDefault();
-                      }
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                )
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/#${link.name.toLowerCase()}`}
+                  style={{
+                    color: '#fff',
+                    fontWeight: 400,
+                    fontSize: '1rem',
+                    borderRadius: 'var(--border-radius)',
+                    padding: '0.25rem 0.5rem',
+                    transition: 'color 0.15s',
+                  }}
+                  scroll={true}
+                  onClick={e => {
+                    const sectionId = link.name.toLowerCase();
+                    if (
+                      typeof window !== 'undefined' &&
+                      window.location.pathname !== '/'
+                    ) {
+                      window.location.href = `/#${sectionId}`;
+                      e.preventDefault();
+                    }
+                  }}
+                >
+                  {link.name}
+                </Link>
               )}
             </li>
           ))}
@@ -308,109 +243,51 @@ export default function Header() {
             }}>
               {navLinks.map(link => (
                 <li key={link.name} style={{ position: 'relative' }}>
-                  {link.dropdown ? (
-                    <details style={{ color: '#fff' }}>
-                      <summary style={{
-                        background: 'none',
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      style={{
+                        color: (pathname === link.href) ? '#6800F8' : '#fff',
+                        fontWeight: 400,
+                        fontSize: '1.3rem',
+                        borderRadius: 'var(--border-radius)',
+                        padding: '0.25rem 0.5rem',
+                        transition: 'color 0.15s',
+                        outline: 'none',
+                        textDecoration: 'none',
+                      }}
+                      onClick={() => setMobileMenu(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/#${link.name.toLowerCase()}`}
+                      style={{
                         color: '#fff',
                         fontWeight: 400,
                         fontSize: '1.3rem',
-                        border: 'none',
-                        padding: 0,
-                        cursor: 'pointer',
                         borderRadius: 'var(--border-radius)',
+                        padding: '0.25rem 0.5rem',
+                        transition: 'color 0.15s',
                         outline: 'none',
-                        listStyle: 'none',
-                      }}>Features</summary>
-                      <ul style={{
-                        background: 'rgba(24,24,24,0.98)',
-                        borderRadius: 'var(--border-radius)',
-                        marginTop: 10,
-                        padding: '0.5rem 0',
-                        minWidth: 180,
-                        boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
-                        border: '1px solid #222',
-                        zIndex: 100,
-                        position: 'relative',
-                      }}>
-                        {featuresDropdown.map(f => {
-                          const sectionId = f.toLowerCase().replace(/ /g, '-');
-                          return (
-                            <li key={f} style={{
-                              padding: '0.5rem 1.5rem',
-                              color: '#fff',
-                              fontWeight: 400,
-                              fontSize: '1rem',
-                              cursor: 'pointer',
-                              whiteSpace: 'nowrap',
-                              transition: 'background 0.15s',
-                            }}>
-                              <Link
-                                href={`/#${sectionId}`}
-                                style={{ color: '#fff', textDecoration: 'none', display: 'block', width: '100%' }}
-                                tabIndex={0}
-                                scroll={true}
-                                onClick={e => {
-                                  if (typeof window !== 'undefined' && window.location.pathname !== '/') {
-                                    window.location.href = `/#${sectionId}`;
-                                    e.preventDefault();
-                                  }
-                                }}
-                              >
-                                {f}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </details>
-                  ) : (
-                    link.href ? (
-                      <Link
-                        href={link.href}
-                        style={{
-                          color: (pathname === link.href) ? '#6800F8' : '#fff',
-                          fontWeight: 400,
-                          fontSize: '1.3rem',
-                          borderRadius: 'var(--border-radius)',
-                          padding: '0.25rem 0.5rem',
-                          transition: 'background 0.15s',
-                          outline: 'none',
-                          textDecoration: 'none',
-                        }}
-                        onClick={() => setMobileMenu(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    ) : (
-                      <Link
-                        href={`/#${link.name.toLowerCase()}`}
-                        style={{
-                          color: '#fff',
-                          fontWeight: 400,
-                          fontSize: '1.3rem',
-                          borderRadius: 'var(--border-radius)',
-                          padding: '0.25rem 0.5rem',
-                          transition: 'background 0.15s',
-                          outline: 'none',
-                          textDecoration: 'none',
-                        }}
-                        scroll={true}
-                        onClick={e => {
-                          const sectionId = link.name.toLowerCase();
-                          if (
-                            typeof window !== 'undefined' &&
-                            window.location.pathname !== '/'
-                          ) {
-                            window.location.href = `/#${sectionId}`;
-                            e.preventDefault();
-                          }
-                          setMobileMenu(false);
-                        }}
-                      >
-                        {link.name}
-                      </Link>
-                    )
+                        textDecoration: 'none',
+                      }}
+                      scroll={true}
+                      onClick={e => {
+                        const sectionId = link.name.toLowerCase();
+                        if (
+                          typeof window !== 'undefined' &&
+                          window.location.pathname !== '/'
+                        ) {
+                          window.location.href = `/#${sectionId}`;
+                          e.preventDefault();
+                        }
+                        setMobileMenu(false);
+                      }}
+                    >
+                      {link.name}
+                    </Link>
                   )}
                 </li>
               ))}
@@ -420,4 +297,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+} 

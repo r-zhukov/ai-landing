@@ -8,13 +8,13 @@ const features = [
     name: 'AI Assistant',
     image: (
       <img
-        src="/features/ai-assistant.jpg"
+        src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/features/ai-assistant.jpg` : "/features/ai-assistant.jpg"}
         alt="AI Assistant"
         style={{
           width: '100%',
           height: 220,
           objectFit: 'cover',
-          borderRadius: '1.2rem 0 0 1.2rem',
+        borderRadius: '1.2rem 0 0 1.2rem',
         }}
         loading="lazy"
       />
@@ -28,7 +28,7 @@ const features = [
     name: 'Content Vault',
     image: (
       <img
-        src="/features/content-vault.jpg"
+        src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/features/content-vault.jpg` : "/features/content-vault.jpg"}
         alt="Content Vault"
         style={{
           width: '100%',
@@ -45,7 +45,7 @@ const features = [
     name: 'Views Heatmap',
     image: (
       <img
-        src="/features/views-heatmap.jpg"
+        src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/features/views-heatmap.jpg` : "/features/views-heatmap.jpg"}
         alt="Views Heatmap"
         style={{
           width: '100%',
@@ -62,7 +62,7 @@ const features = [
     name: 'Workflows',
     image: (
       <img
-        src="/features/workflows.jpg"
+        src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/features/workflows.jpg` : "/features/workflows.jpg"}
         alt="Workflows"
         style={{
           width: '100%',
@@ -79,7 +79,7 @@ const features = [
     name: 'Vibe Marketing',
     image: (
       <img
-        src="/features/vibe-marketing.jpg"
+        src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/features/vibe-marketing.jpg` : "/features/vibe-marketing.jpg"}
         alt="Vibe Marketing"
         style={{
           width: '100%',
@@ -263,17 +263,17 @@ export default function Features() {
           </div>
           <button
             style={{
-              background: 'linear-gradient(90deg, #4f8cff 60%, #a78bfa 100%)',
-              color: '#fff',
-              fontWeight: 700,
-              fontSize: '1.18rem',
-              border: 'none',
-              borderRadius: '999px',
-              padding: '1.1rem 2.8rem',
-              boxShadow: '0 2px 16px 0 rgba(79,140,255,0.10)',
-              cursor: 'pointer',
-              transition: 'background 0.18s',
-              outline: 'none',
+            background: 'linear-gradient(90deg, #4f8cff 60%, #a78bfa 100%)',
+            color: '#fff',
+            fontWeight: 700,
+            fontSize: '1.18rem',
+            border: 'none',
+            borderRadius: '999px',
+            padding: '1.1rem 2.8rem',
+            boxShadow: '0 2px 16px 0 rgba(79,140,255,0.10)',
+            cursor: 'pointer',
+            transition: 'background 0.18s',
+            outline: 'none',
             }}
             onClick={() => openModal('early')}
           >

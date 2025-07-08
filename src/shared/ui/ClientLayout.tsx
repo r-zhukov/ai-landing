@@ -5,12 +5,14 @@ import Modal from '../../features/Modal';
 import EarlyAccessForm from '../../features/EarlyAccessForm';
 import VideoDemo from '../../features/VideoDemo';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ModalContext = createContext({
   openModal: (type: 'early' | 'video') => {},
 });
 
 // Intersection Observer hook
-function useInView(ref: React.RefObject<HTMLDivElement>, rootMargin = '-40px') {
+function useInView(ref: React.RefObject<HTMLDivElement | null>, rootMargin = '-40px') {
   const [inView, setInView] = useState(false);
   useEffect(() => {
     if (!ref.current) return;

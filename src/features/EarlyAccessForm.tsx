@@ -49,7 +49,7 @@ export default function EarlyAccessForm({ onSuccess }: { onSuccess?: () => void 
     return (
       <div style={{ textAlign: 'center', padding: '2rem 0' }}>
         <div style={{ fontWeight: 500, fontSize: '1.2rem', marginBottom: 8 }}>Thank you!</div>
-        <div style={{ color: '#ededed', fontWeight: 300, fontSize: '1rem' }}>We'll be in touch soon about early access.</div>
+        <div style={{ color: '#ededed', fontWeight: 300, fontSize: '1rem' }}>We&apos;ll be in touch soon about early access.</div>
       </div>
     );
   }
@@ -83,55 +83,55 @@ export default function EarlyAccessForm({ onSuccess }: { onSuccess?: () => void 
       {/* Name */}
       <div style={fieldWrap}>
         <label htmlFor="name" style={labelStyle}>Name *</label>
-        <input
+      <input
           id="name"
-          name="name"
-          type="text"
-          placeholder="Name*"
-          value={form.name}
-          onChange={handleChange}
+        name="name"
+        type="text"
+        placeholder="Name*"
+        value={form.name}
+        onChange={handleChange}
           style={inputStyle}
-          required
-        />
+        required
+      />
       </div>
       {/* Email */}
       <div style={fieldWrap}>
         <label htmlFor="email" style={labelStyle}>Email *</label>
-        <input
+      <input
           id="email"
-          name="email"
-          type="email"
-          placeholder="Email*"
-          value={form.email}
-          onChange={handleChange}
+        name="email"
+        type="email"
+        placeholder="Email*"
+        value={form.email}
+        onChange={handleChange}
           style={inputStyle}
-          required
-        />
+        required
+      />
       </div>
       {/* Brand */}
       <div style={fieldWrap}>
         <label htmlFor="brand" style={labelStyle}>Brand *</label>
-        <input
+      <input
           id="brand"
-          name="brand"
-          type="text"
-          placeholder="Brand*"
-          value={form.brand}
-          onChange={handleChange}
+        name="brand"
+        type="text"
+        placeholder="Brand*"
+        value={form.brand}
+        onChange={handleChange}
           style={inputStyle}
-          required
-        />
+        required
+      />
       </div>
       {/* Phone */}
       <div style={fieldWrap}>
         <label htmlFor="phone" style={labelStyle}>Phone</label>
-        <input
+      <input
           id="phone"
-          name="phone"
-          type="tel"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={handleChange}
+        name="phone"
+        type="tel"
+        placeholder="Phone"
+        value={form.phone}
+        onChange={handleChange}
           style={inputStyle}
         />
       </div>
@@ -199,7 +199,7 @@ export default function EarlyAccessForm({ onSuccess }: { onSuccess?: () => void 
           value={form.message}
           onChange={handleChange}
           style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }}
-        />
+      />
       </div>
       {/* Error (full width) */}
       {error && <div style={{ color: '#ff6b6b', fontWeight: 400, fontSize: '0.98rem', gridColumn: '1 / -1' }}>{error}</div>}

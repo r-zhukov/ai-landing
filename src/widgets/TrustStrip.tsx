@@ -31,11 +31,11 @@ export default function TrustStrip() {
       }}>
         {brands.map((brand, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 100 }}>
-            <img src={brand.logo} alt={brand.name} style={{ height: 38, width: 'auto', filter: 'invert(1) grayscale(1) brightness(1.2)', opacity: 0.92, marginBottom: 8, maxWidth: 120 }} />
+            <img src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}${brand.logo}` : brand.logo} alt={brand.name} style={{ height: 38, width: 'auto', filter: 'invert(1) grayscale(1) brightness(1.2)', opacity: 0.92, marginBottom: 8, maxWidth: 120 }} />
           </div>
         ))}
       </div>
-      <a href="#customers" style={{
+      <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/#customers`} style={{
         color: '#ededed',
         fontWeight: 500,
         fontSize: '1.08rem',

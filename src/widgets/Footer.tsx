@@ -4,10 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { name: 'Features', href: '/#features' },
   { name: 'Customers', href: '/customers' },
   { name: 'Company', href: '/company' },
-  { name: 'Testimonials', href: '/#testimonials' },
   { name: 'Contact', href: '/contacts' },
   { name: 'FAQ', href: '/faq' },
 ];
@@ -39,7 +37,7 @@ export default function Footer() {
         {/* Logo (left) */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', height: 26 }}>
           <img
-            src="/logo_maverickx_vision.svg"
+            src={process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/logo_maverickx_vision.svg` : "/logo_maverickx_vision.svg"}
             alt="MaverickX Vision Logo"
             style={{ height: 26, width: 'auto', display: 'block' }}
             draggable={false}
@@ -58,7 +56,7 @@ export default function Footer() {
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
-                  href={link.href}
+                  href={link.href.startsWith('/#') ? `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${link.href}` : link.href}
                   style={{
                     color: '#fff',
                     textDecoration: 'none',
@@ -70,9 +68,14 @@ export default function Footer() {
                     borderBottom: pathname === link.href ? '2px solid #4f8cff' : '2px solid transparent',
                     transition: 'border-color 0.18s, color 0.18s',
                     display: 'inline-block',
+                    boxShadow: 'none',
                   }}
-                  onMouseOver={e => (e.currentTarget.style.borderBottom = '2px solid #4f8cff')}
-                  onMouseOut={e => (e.currentTarget.style.borderBottom = pathname === link.href ? '2px solid #4f8cff' : '2px solid transparent')}
+                  onMouseOver={e => {
+                    e.currentTarget.style.color = '#6800F8';
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.color = '#fff';
+                  }}
                 >
                   {link.name}
                 </Link>

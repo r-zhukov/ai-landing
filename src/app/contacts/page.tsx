@@ -51,34 +51,7 @@ export default function ContactsPage() {
       {/* Header */}
       <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1.1rem', letterSpacing: '-0.01em', textAlign: 'center', color: '#fff' }}>Contact Us</h1>
       <div style={{ color: '#bdbdbd', fontSize: '1.18rem', fontWeight: 400, marginBottom: '2.8rem', textAlign: 'center', maxWidth: 540 }}>
-        We'd love to hear from you. Reach out for partnerships, support, or general inquiries.
-      </div>
-      {/* Info Card */}
-      <div style={{
-        background: '#232323',
-        borderRadius: '1.1rem',
-        boxShadow: '0 4px 32px 0 rgba(0,0,0,0.18)',
-        padding: '2.2rem 2.2rem 2rem 2.2rem',
-        maxWidth: 540,
-        width: '100%',
-        marginBottom: '2.5rem',
-        color: '#ededed',
-        fontSize: '1.13rem',
-        fontWeight: 400,
-        lineHeight: 1.7,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.7rem',
-      }}>
-        <div><span style={{ color: '#bdbdbd', fontWeight: 700 }}>Address:</span> <span style={{ color: '#fff', fontWeight: 500 }}>123 Visionary Ave, Suite 100, San Francisco, CA 94105</span></div>
-        <div><span style={{ color: '#bdbdbd', fontWeight: 700 }}>Email:</span> <a href="mailto:contact@maverickx.com" style={{ color: '#4f8cff', textDecoration: 'none', fontWeight: 700 }}>contact@maverickx.com</a></div>
-        <div><span style={{ color: '#bdbdbd', fontWeight: 700 }}>Phone:</span> <a href="tel:+1234567890" style={{ color: '#4f8cff', textDecoration: 'none', fontWeight: 700 }}>+1 (234) 567-890</a></div>
-        <div><span style={{ color: '#bdbdbd', fontWeight: 700 }}>Business Hours:</span> <span style={{ color: '#fff', fontWeight: 500 }}>Mon–Fri, 9am–6pm PST</span></div>
-        <div style={{ marginTop: 6 }}>
-          <span style={{ color: '#bdbdbd', fontWeight: 700 }}>Social:</span>
-          <a href="#" style={{ color: '#4f8cff', marginLeft: 12, marginRight: 8, fontWeight: 700 }}>LinkedIn</a>
-          <a href="#" style={{ color: '#4f8cff', marginRight: 8, fontWeight: 700 }}>Twitter</a>
-        </div>
+        We&apos;d love to hear from you. Reach out for partnerships, support, or general inquiries.
       </div>
       {/* Contact Form */}
       <form style={{
