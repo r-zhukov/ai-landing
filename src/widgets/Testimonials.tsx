@@ -86,7 +86,7 @@ export default function FeedbackSection() {
               ))}
             </div>
             <div style={{ color: '#ededed', fontWeight: 400, fontSize: '1.13rem', marginBottom: 22, lineHeight: 1.7, fontStyle: 'italic' }}>
-              "{f.quote}"
+              &quot;{f.quote}&quot;
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 'auto' }}>
               {f.avatar ? (

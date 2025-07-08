@@ -12,16 +12,7 @@ const navLinks = [
   { name: 'FAQ', href: '/faq' },
 ];
 
-const featuresDropdown = [
-  'AI Assistant',
-  'Content Vault',
-  'Views Heatmap',
-  'Workflows',
-  'Vibe Marketing',
-];
-
 export default function Header() {
-  const [showDropdown, setShowDropdown] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const { openModal } = useContext(ModalContext);
   const menuRef = useRef<HTMLDivElement>(null);
